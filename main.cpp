@@ -80,7 +80,7 @@ int main() {
     }
 
     //8
-    delete charPointer;
+    delete[] charPointer;
 
     int length, width;
     cout << "\nInput size of double two array: ";
@@ -102,7 +102,10 @@ int main() {
         }
         cout << endl;
     }
-    delete doubleArrayPointer;
+    for (int i = 0; i < length; ++i) {
+        delete[] doubleArrayPointer[i];
+    }
+    delete[] doubleArrayPointer;
 
     //9
     cout << "Random element array #5: " << intTreeArray[0][0][2] << endl;
@@ -112,7 +115,7 @@ int main() {
 
     //11 ???
     intTwoArrayPointer = intTreeArray;
-    cout << "Test" << *(intTwoArrayPointer+1)[0][0];
+    cout << "Test" << *(intTwoArrayPointer + 1)[0][0];
 
     return 0;
 }
