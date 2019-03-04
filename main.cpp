@@ -5,7 +5,7 @@ using namespace std;
 int main() {
     char charArray[3];
     char *charPointer;
-    double doubleArray[3];
+    static double doubleArray[3];
     double **doubleArrayPointer;
     int intTreeArray[3][3][3];
     int (*intTwoArrayPointer)[3][3];
@@ -47,14 +47,17 @@ int main() {
 
 
     //6
+    cout << "\nData in doubleArray: ";
     for (double d : doubleArray) {
         cout << d << ' ';
     }
 
+    cout << "\nInput 3 double: ";
     for (double &d : doubleArray) {
         cin >> d;
     }
 
+    cout << "\nResult: ";
     for (double d : doubleArray) {
         cout << d << ' ';
     }
@@ -111,11 +114,11 @@ int main() {
     cout << "Random element array #5: " << intTreeArray[0][0][2] << endl;
 
     //10
-    cout << "Else random element array #5: " << *(*(*(intTreeArray + 1) + 1) + 1) << endl;
+    cout << "Another one random element array #5: " << *(*(*(intTreeArray)) + 2) << endl;
 
-    //11 ???
+    //11
     intTwoArrayPointer = intTreeArray;
-    cout << "Test" << *(intTwoArrayPointer + 1)[0][0];
+    cout << "Test " << (*intTwoArrayPointer)[0][2];
 
     return 0;
 }
