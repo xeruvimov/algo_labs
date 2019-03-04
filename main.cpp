@@ -8,7 +8,7 @@ int main() {
     double doubleArray[3];
     double **doubleArrayPointer;
     int intTreeArray[3][3][3];
-    int **intTwoArrayPointer;
+    int (*intTwoArrayPointer)[3][3];
 
     //1
     for (char i : charArray) {
@@ -16,11 +16,13 @@ int main() {
     }
 
     //2
+    cout << "Input 3 char\n";
     for (char &i : charArray) {
         cin >> i;
     }
 
     //3
+    cout << "Result\n";
     for (char i : charArray) {
         cout << i << ' ';
     }
@@ -35,9 +37,14 @@ int main() {
     for (int k = 0; k < 3; ++k) {
         cout << *(charPointer + k) << ' ';
     }
+    cout << endl;
 
     //5
-    //ЯННП
+    cout << "Data in charArray with ptr: ";
+    for (int k = 0; k < 3; ++k) {
+        cout << *(charArray + k) << ' ';
+    }
+
 
     //6
     for (double d : doubleArray) {
@@ -54,16 +61,16 @@ int main() {
 
     //7
     int arraySize;
-    cout << "Input size of char array ";
+    cout << "\nInput size of char array ";
     cin >> arraySize;
     charPointer = new char[arraySize];
 
-    cout << "Data in new char array ";
+    cout << "\nData in new char array ";
     for (int j = 0; j < arraySize; ++j) {
         cout << *(charPointer + j) << ' ';
     }
 
-    cout << "Input data in new char array of size " << arraySize << ": ";
+    cout << "\nInput data in new char array of size " << arraySize << ": ";
     for (int j = 0; j < arraySize; ++j) {
         cin >> *(charPointer + j);
     }
@@ -76,11 +83,11 @@ int main() {
     delete charPointer;
 
     int length, width;
-    cout << "Input size of double two array: ";
+    cout << "\nInput size of double two array: ";
     cin >> length >> width;
     doubleArrayPointer = new double *[length];
 
-    cout << "Input data in this array: ";
+    cout << "\nInput data in this array: ";
     for (int l = 0; l < length; ++l) {
         doubleArrayPointer[l] = new double[width];
         for (int i = 0; i < width; ++i) {
@@ -105,6 +112,7 @@ int main() {
 
     //11 ???
     intTwoArrayPointer = intTreeArray;
+    cout << "Test" << *(intTwoArrayPointer+1)[0][0];
 
     return 0;
 }
