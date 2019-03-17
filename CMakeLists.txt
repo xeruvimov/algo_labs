@@ -3,4 +3,4 @@ project(AlgoLabs)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(AlgoLabs main.cpp)
+add_executable(AlgoLabs LabOne.cpp LabTwo.cpp)
