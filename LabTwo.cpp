@@ -58,7 +58,7 @@ void outDoubleArray(SomeStruct *t) {
 }
 
 char getRandomChar() {
-    static char c = 'A' + rand() % 24;
+    char c = 'A' + rand() % 24;
     return c;
 }
 
@@ -92,4 +92,25 @@ void outOtherString(SomeStruct &t) {
 void deletAll(SomeStruct *t) {
     delete[] t->stringTwo;
     delete t->array;
+}
+
+int main() {
+    srand(time(0));
+    SomeStruct one;
+    SomeStruct *two;
+
+    initSomeStruct(one);
+
+    two = new SomeStruct[3];
+
+    for (int i = 0; i < 3; ++i) {
+        initSomeStruct(two[i]);
+    }
+
+    deletAll(&one);
+    for (int i = 0; i < 3; ++i) {
+        deletAll(&two[i]);
+    }
+
+    return 0;
 }
