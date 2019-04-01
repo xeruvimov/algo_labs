@@ -25,7 +25,7 @@ void initOtherString(SomeStruct &t);
 
 void outOtherString(SomeStruct &t);
 
-void deletAll(SomeStruct *t);
+void deleteAll(SomeStruct *t);
 
 
 SomeStruct initSomeStruct(SomeStruct &t) {
@@ -89,7 +89,7 @@ void outOtherString(SomeStruct &t) {
     cout << "id - " << t.id << endl;
 }
 
-void deletAll(SomeStruct *t) {
+void deleteAll(SomeStruct *t) {
     delete[] t->stringTwo;
     delete t->array;
 }
@@ -107,10 +107,11 @@ int main() {
         initSomeStruct(two[i]);
     }
 
-    deletAll(&one);
+    deleteAll(&one);
     for (int i = 0; i < 3; ++i) {
-        deletAll(&two[i]);
+        deleteAll(&two[i]);
     }
+    delete[] two;
 
     return 0;
 }
