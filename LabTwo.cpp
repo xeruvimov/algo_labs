@@ -94,7 +94,7 @@ void deleteAll(SomeStruct *t) {
     delete t->array;
 }
 
-int main() {
+int main1() {
     srand(time(0));
     SomeStruct one;
     SomeStruct *two;
