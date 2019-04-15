@@ -31,7 +31,7 @@ void readTextFile(SomeStruct &s, FILE *file) {
     for (int i = 0; i < s.lengthArray; i++) {
         fscanf(file, "%lf; ", s.array[i]);
     }
-    cout << "Struct was read from text file" << endl;
+//    cout << "Struct was read from text file" << endl;
 }
 
 void writeToTextFile(SomeStruct *s, FILE *file) {
@@ -40,28 +40,90 @@ void writeToTextFile(SomeStruct *s, FILE *file) {
     for (int i = 0; i < s->lengthArray; i++) {
         fprintf(file, "%lf; ", s->array[i]);
     }
-    cout << "Struct was written to text file" << endl;
+//    cout << "Struct was written to text file" << endl;
 }
 
 void writeStructToConsole(SomeStruct t) {
-    outDoubleArray(&t);
     outOtherString(t);
+    outDoubleArray(&t);
 }
+
+//int main() {
+//    srand(time(0));
+//    FILE *file = fopen("test.txt", "wt");
+//
+//    SomeStruct writeStructure;
+//    initSomeStruct(writeStructure);
+//    writeToTextFile(&writeStructure, file);
+//    fclose(file);
+//    file = fopen("test.txt", "rt");
+//    SomeStruct readStructure;
+//    readTextFile(readStructure, file);
+//    fclose(file);
+//    writeStructToConsole(readStructure);
+//
+//    return 0;
+//}
+
+FILE *file;
 
 int main() {
     srand(time(0));
-    FILE *file = fopen("test.txt", "wt");
+    SomeStruct *writeStructs = new SomeStruct[3];
+    SomeStruct *readTextStructs = new SomeStruct[3];
+    SomeStruct *readBinaryStructs = new SomeStruct[3];
 
-    SomeStruct writeStructure;
-    initSomeStruct(writeStructure);
-    writeToTextFile(&writeStructure, file);
-    fclose(file);
-    file = fopen("test.txt", "rt");
-    SomeStruct readStructure;
-    readTextFile(readStructure, file);
-    fclose(file);
-    writeStructToConsole(readStructure);
+    cout << "Init write structs" << endl;
+    for (int i = 0; i < 3; i++) {
+        initSomeStruct(writeStructs[i]);
+    }
 
+    cout << "Write structs to files" << endl;
+    for (int i = 0; i < 3; i++) {
+        char *fileName = new char[100];
+        sprintf(fileName, "text_%d", i);
+        file = fopen(fileName, "wt");
+        writeToTextFile(&writeStructs[i], file);
+        fclose(file);
+        cout << i << " struct was written to text file" << endl;
+        sprintf(fileName, "binary_%d", i);
+        file = fopen(fileName, "wt");
+        writeToBinaryFile(writeStructs[i], file);
+        fclose(file);
+        cout << i << " struct was written to binary file" << endl;
+    }
+
+    cout << "Read structs from text file" << endl;
+    for (int i = 0; i < 3; i++) {
+        char *fileName = new char[100];
+        sprintf(fileName, "text_%d", i);
+        file = fopen(fileName, "rt");
+        readTextFile(readTextStructs[i], file);
+        fclose(file);
+        cout << i << " struct was read from text file" << endl;
+    }
+
+    cout << "Write structs to binary file" << endl;
+    for (int i = 0; i < 3; i++) {
+        char *fileName = new char[300];
+        sprintf(fileName, "binary_%d", i);
+        file = fopen(fileName, "rt");
+        readBinaryFile(readBinaryStructs[i], file);
+        fclose(file);
+        cout << i << " struct was written to binary file" << endl;
+    }
+
+    cout << "Output text struct" << endl;
+    for (int i = 0; i < 3; i++) {
+        cout << i << " text struct" << endl;
+        writeStructToConsole(readTextStructs[i]);
+    }
+
+    cout << "Output binary struct" << endl;
+    for (int i = 0; i < 3; i++) {
+        cout << i << " binary struct" << endl;
+        writeStructToConsole(readBinaryStructs[i]);
+    }
     return 0;
 }
 
