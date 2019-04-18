@@ -22,14 +22,14 @@ void writeToBinaryFile(SomeStruct &s, FILE *file) {
 }
 
 void readTextFile(SomeStruct &s, FILE *file) {
-    fscanf(file, "ID: %lf\n", s.id);
+    fscanf(file, "ID: %lf\n", &s.id);
     fscanf(file, "First string: %s\n", s.stringOne);
     s.stringTwo = new char[10];
     fscanf(file, "Second string: %s\n", s.stringTwo);
-    fscanf(file, "Arrays length: %d\n", s.lengthArray);
+    fscanf(file, "Arrays length: %d\n", &s.lengthArray);
     s.array = new double[s.lengthArray];
     for (int i = 0; i < s.lengthArray; i++) {
-        fscanf(file, "%lf; ", s.array[i]);
+        fscanf(file, "%lf; ", &s.array[i]);
     }
 //    cout << "Struct was read from text file" << endl;
 }
