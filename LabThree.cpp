@@ -1,6 +1,7 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wformat"
 #pragma ide diagnostic ignored "cert-err34-c"
+
 #include <stdio.h>
 #include "LabTwo.cpp"
 
@@ -31,7 +32,6 @@ void readTextFile(SomeStruct &s, FILE *file) {
     for (int i = 0; i < s.lengthArray; i++) {
         fscanf(file, "%lf; ", &s.array[i]);
     }
-//    cout << "Struct was read from text file" << endl;
 }
 
 void writeToTextFile(SomeStruct *s, FILE *file) {
@@ -40,7 +40,6 @@ void writeToTextFile(SomeStruct *s, FILE *file) {
     for (int i = 0; i < s->lengthArray; i++) {
         fprintf(file, "%lf; ", s->array[i]);
     }
-//    cout << "Struct was written to text file" << endl;
 }
 
 void writeStructToConsole(SomeStruct t) {
@@ -48,22 +47,6 @@ void writeStructToConsole(SomeStruct t) {
     outDoubleArray(&t);
 }
 
-//int main() {
-//    srand(time(0));
-//    FILE *file = fopen("test.txt", "wt");
-//
-//    SomeStruct writeStructure;
-//    initSomeStruct(writeStructure);
-//    writeToTextFile(&writeStructure, file);
-//    fclose(file);
-//    file = fopen("test.txt", "rt");
-//    SomeStruct readStructure;
-//    readTextFile(readStructure, file);
-//    fclose(file);
-//    writeStructToConsole(readStructure);
-//
-//    return 0;
-//}
 
 FILE *file;
 
@@ -87,7 +70,7 @@ int main() {
         fclose(file);
         cout << i << " struct was written to text file" << endl;
         sprintf(fileName, "binary_%d", i);
-        file = fopen(fileName, "wt");
+        file = fopen(fileName, "wb");
         writeToBinaryFile(writeStructs[i], file);
         fclose(file);
         cout << i << " struct was written to binary file" << endl;
@@ -107,7 +90,7 @@ int main() {
     for (int i = 0; i < 3; i++) {
         char *fileName = new char[300];
         sprintf(fileName, "binary_%d", i);
-        file = fopen(fileName, "rt");
+        file = fopen(fileName, "rb");
         readBinaryFile(readBinaryStructs[i], file);
         fclose(file);
         cout << i << " struct was written to binary file" << endl;
