@@ -1,12 +1,8 @@
 #include <stdexcept>
+#include <iostream>
 
 using namespace std;
 
-struct Node {
-    char data;
-    Node *nextNode;
-    Node *prevNode;
-};
 
 struct LinkedStack {
 public:
@@ -33,12 +29,13 @@ public:
         char result = this->tail->data;
 
         if (this->size == 1) {
+            delete head;
             this->head = nullptr;
             this->tail = this->head;
         } else {
             this->tail = this->tail->prevNode;
+            delete this->tail->nextNode;
         }
-
         this->size--;
         return result;
     }
@@ -50,7 +47,12 @@ public:
 private:
     unsigned int size = 0;
 
+    struct Node {
+        char data;
+        Node *nextNode;
+        Node *prevNode;
+    };
+
     Node *head = nullptr;
     Node *tail;
 };
-

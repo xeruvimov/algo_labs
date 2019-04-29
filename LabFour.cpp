@@ -8,63 +8,67 @@
 using namespace std;
 
 void testQueue() {
-    cout << "Test Queue";
+    cout << "\nTest Queue\n";
     Queue queue;
-    cout << "Push 5 random char";
+    cout << "Push 5 random char\n";
     for (int i = 0; i < 5; ++i) {
         char t = getRandomChar();
-        cout << "Push char: " << t;
+        cout << "Push char: " << t << endl;
         queue.push(t);
     }
-    cout << "Pop all data from Queue";
-    for (int j = 0; j < queue.getSize(); ++j) {
+    cout << "Pop all data from Queue\n";
+    for (int j = 0; j < 5; ++j) {
         cout << queue.pop();
     }
+    cout << endl;
 }
 
 void testLoopQueue() {
-    cout << "Test LoopQueue";
+    cout << "\nTest LoopQueue\n";
     LoopQueue loopQueue;
-    cout << "Push 5 random char";
+    cout << "Push 5 random char\n";
     for (int i = 0; i < 5; ++i) {
         char t = getRandomChar();
-        cout << "Push char: " << t;
+        cout << "Push char: " << t << endl;
         loopQueue.push(t);
     }
-    cout << "Pop all data from LoopQueue";
-    for (int j = 0; j < loopQueue.getSize(); ++j) {
+    cout << "Pop all data from LoopQueue\n";
+    for (int j = 0; j < 5; ++j) {
         cout << loopQueue.pop();
     }
+    cout << endl;
 }
 
 void testArrayStack() {
-    cout << "Test ArrayStack";
+    cout << "\nTest ArrayStack\n";
     ArrayStack arrayStack;
-    cout << "Push 5 random char";
+    cout << "Push 5 random char\n";
     for (int i = 0; i < 5; ++i) {
         char t = getRandomChar();
-        cout << "Push char: " << t;
+        cout << "Push char: " << t << endl;
         arrayStack.push(t);
     }
-    cout << "Pop all data from ArrayStack";
-    for (int j = 0; j < arrayStack.getSize(); ++j) {
+    cout << "Pop all data from ArrayStack\n";
+    for (int j = 0; j < 5; ++j) {
         cout << arrayStack.pop();
     }
+    cout << endl;
 }
 
 void testLinkedStack() {
-    cout << "Test LinkedStack";
+    cout << "\nTest LinkedStack\n";
     LinkedStack linkedStack;
-    cout << "Push 5 random char";
+    cout << "Push 5 random char\n";
     for (int i = 0; i < 5; ++i) {
         char t = getRandomChar();
-        cout << "Push char: " << t;
+        cout << "Push char: " << t << endl;
         linkedStack.push(t);
     }
-    cout << "Pop all data from LinkedStack";
-    for (int j = 0; j < linkedStack.getSize(); ++j) {
-        cout << linkedStack.pop();
+    cout << "Pop all data from LinkedStack\n";
+    for (int j = 0; j < 5; ++j) {
+        cout << linkedStack.pop() << endl;
     }
+    cout << endl;
 }
 
 int main() {
