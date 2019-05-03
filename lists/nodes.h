@@ -1,10 +1,10 @@
 struct DoubleLinkNode {
-    SomeStruct data;
-    DoubleLinkNode *next;
-    DoubleLinkNode *prev;
+    SomeStruct data{};
+    DoubleLinkNode *next = NULL;
+    DoubleLinkNode *prev = NULL;
 };
 
 struct LinkNode {
-    SomeStruct data;
-    LinkNode *next;
+    SomeStruct data{};
+    LinkNode *next = NULL;
 };

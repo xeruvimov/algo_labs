@@ -8,7 +8,7 @@ using namespace std;
 
 SomeStruct *data;
 
-SomeStruct *initTestArray() {
+void initTestArray() {
     data = new SomeStruct[DEFAULT_SIZE_ARRAY];
     cout << "--------------TEST DATA--------------\n";
     for (int i = 0; i < DEFAULT_SIZE_ARRAY; ++i) {
@@ -24,6 +24,7 @@ void printSomeStruct(SomeStruct s) {
 }
 
 void testLoopLinkedList() {
+    cout << "\n--------------TEST LoopLinkedList--------------\n";
     auto *loopLinkedList = new LoopLinkedList;
     for (int i = 0; i < DEFAULT_SIZE_ARRAY; ++i) {
         loopLinkedList->push(data[i]);
@@ -38,9 +39,11 @@ void testLoopLinkedList() {
 
     delete itr;
     delete loopLinkedList;
+    cout << "--------------TEST LoopLinkedList--------------\n";
 }
 
 void testSingleLinkedList() {
+    cout << "\n--------------TEST SingleLinkedList--------------\n";
     auto *singleLinkedList = new SingleLinkedList;
     for (int i = 0; i < DEFAULT_SIZE_ARRAY; ++i) {
         singleLinkedList->push(data[i]);
@@ -55,9 +58,11 @@ void testSingleLinkedList() {
 
     delete itr;
     delete singleLinkedList;
+    cout << "--------------TEST SingleLinkedList--------------\n";
 }
 
 void testLinkedList() {
+    cout << "\n--------------TEST LinkedList--------------\n";
     auto *linkedList = new LinkedList;
     for (int i = 0; i < DEFAULT_SIZE_ARRAY; ++i) {
         linkedList->push(data[i]);
@@ -77,6 +82,7 @@ void testLinkedList() {
 
     delete itr;
     delete linkedList;
+    cout << "--------------TEST LinkedList--------------\n";
 }
 
 int main() {

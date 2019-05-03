@@ -4,11 +4,10 @@
 
 using namespace std;
 
-//todo А ПОЧЕМУ РОТ В ПАМЯТИ? Нужны деструкторы
 struct LinkedList {
 public:
     void push(SomeStruct c) {
-        DoubleLinkNode *newNode = new DoubleLinkNode;
+        auto *newNode = new DoubleLinkNode;
         newNode->data = c;
 
         if (this->size == 0) {
@@ -81,10 +80,22 @@ public:
         return new Iterator(*this);
     }
 
+    virtual ~LinkedList() {
+        DoubleLinkNode *nextNode = this->head->next;
+        for (int i = 0; i < size; ++i) {
+            delete this->head;
+            this->head = NULL;
+            if (nextNode != NULL) {
+                this->head = nextNode;
+                nextNode = this->head->next;
+            }
+        }
+    }
+
 private:
     size_t size = 0;
-    DoubleLinkNode *head = nullptr;
-    DoubleLinkNode *tail;
+    DoubleLinkNode *head = NULL;
+    DoubleLinkNode *tail = NULL;
 
     DoubleLinkNode *getHead() {
         return this->head;

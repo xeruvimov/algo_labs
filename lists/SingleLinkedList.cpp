@@ -2,7 +2,6 @@
 
 using namespace std;
 
-//todo ОПЯТЬ ВЕСЬ РОТ В ПАМЯТИ
 struct SingleLinkedList {
 public:
     void push(SomeStruct c) {
@@ -60,10 +59,22 @@ public:
         return new Iterator(*this);
     }
 
+    virtual ~SingleLinkedList() {
+        LinkNode *nextNode = this->head->next;
+        for (int i = 0; i < size; ++i) {
+            delete this->head;
+            this->head = NULL;
+            if (nextNode != NULL) {
+                this->head = nextNode;
+                nextNode = this->head->next;
+            }
+        }
+    }
+
 private:
     size_t size = 0;
-    LinkNode *head = nullptr;
-    LinkNode *tail;
+    LinkNode *head = NULL;
+    LinkNode *tail = NULL;
 
     LinkNode *getHead() {
         return this->head;
