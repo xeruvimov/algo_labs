@@ -1,6 +1,4 @@
 #include <stdexcept>
-#include "../LabTwo.cpp"
-#include "nodes.h"
 
 using namespace std;
 
@@ -10,9 +8,11 @@ public:
     void push(SomeStruct c) {
         DoubleLinkNode *newNode = new DoubleLinkNode;
         newNode->data = c;
+        newNode->next = this->head;
 
         if (this->size == 0) {
             this->head = newNode;
+            this->head->prev = this->tail;
             this->tail = this->head;
         } else {
             this->tail->next = newNode;
@@ -79,6 +79,10 @@ public:
 
     Iterator *getIterator() {
         return new Iterator(*this);
+    }
+
+    size_t getSize() {
+        return size;
     }
 
 private:

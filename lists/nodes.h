@@ -6,5 +6,5 @@ struct DoubleLinkNode {
 
 struct LinkNode {
     SomeStruct data;
-    DoubleLinkNode *next;
+    LinkNode *next;
 };

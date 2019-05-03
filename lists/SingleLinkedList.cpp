@@ -3,7 +3,7 @@
 using namespace std;
 
 //todo ОПЯТЬ ВЕСЬ РОТ В ПАМЯТИ
-struct SinglLinkedList {
+struct SingleLinkedList {
 public:
     void push(SomeStruct c) {
         auto *newNode = new LinkNode;
@@ -38,8 +38,8 @@ public:
     struct Iterator {
         LinkNode *nextNode;
 
-        explicit Iterator(SinglLinkedList &singlLinkedList) {
-            this->nextNode = singlLinkedList.getHead();
+        explicit Iterator(SingleLinkedList &singleLinkedList) {
+            this->nextNode = singleLinkedList.getHead();
         }
 
         bool hasNext() {

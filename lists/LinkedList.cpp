@@ -4,6 +4,7 @@
 
 using namespace std;
 
+//todo А ПОЧЕМУ РОТ В ПАМЯТИ? Нужны деструкторы
 struct LinkedList {
 public:
     void push(SomeStruct c) {
@@ -14,6 +15,7 @@ public:
             this->head = newNode;
             this->tail = this->head;
         } else {
+            this->tail->next = newNode;
             newNode->prev = this->tail;
             this->tail = newNode;
         }
@@ -35,10 +37,6 @@ public:
             delete this->tail->next;
         }
         this->size--;
-    }
-
-    DoubleLinkNode *getHead() {
-        return this->head;
     }
 
     struct Iterator {
@@ -87,4 +85,8 @@ private:
     size_t size = 0;
     DoubleLinkNode *head = nullptr;
     DoubleLinkNode *tail;
+
+    DoubleLinkNode *getHead() {
+        return this->head;
+    }
 };
