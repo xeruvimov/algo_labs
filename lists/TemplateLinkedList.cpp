@@ -1,13 +1,20 @@
 #include <stdexcept>
 #include "nodes.h"
-#include "../LabTwo.cpp"
 
 using namespace std;
 
-struct SingleLinkedList {
+template<class T>
+struct GenericNode {
+    T data;
+
+    GenericNode *next = NULL;
+};
+
+template<class T>
+struct TemplateLinkedList {
 public:
-    void push(SomeStruct c) {
-        auto *newNode = new LinkNode;
+    void push(T c) {
+        auto *newNode = new GenericNode<T>;
         newNode->data = c;
 
         if (this->size == 0) {
@@ -37,21 +44,21 @@ public:
     }
 
     struct Iterator {
-        LinkNode *nextNode;
+        GenericNode<T> *nextNode;
 
-        explicit Iterator(SingleLinkedList &singleLinkedList) {
-            this->nextNode = singleLinkedList.getHead();
+        explicit Iterator(TemplateLinkedList &list) {
+            this->nextNode = list.getHead();
         }
 
         bool hasNext() {
             return this->nextNode != NULL;
         }
 
-        SomeStruct next() {
+        T next() {
             if (this->nextNode == NULL) {
                 throw runtime_error("No such element exception");
             }
-            SomeStruct result = this->nextNode->data;
+            T result = this->nextNode->data;
             this->nextNode = this->nextNode->next;
             return result;
         }
@@ -61,8 +68,8 @@ public:
         return new Iterator(*this);
     }
 
-    virtual ~SingleLinkedList() {
-        LinkNode *nextNode = this->head->next;
+    virtual ~TemplateLinkedList() {
+        GenericNode<T> *nextNode = this->head->next;
         for (int i = 0; i < size; ++i) {
             delete this->head;
             this->head = NULL;
@@ -75,10 +82,10 @@ public:
 
 private:
     size_t size = 0;
-    LinkNode *head = NULL;
-    LinkNode *tail = NULL;
+    GenericNode<T> *head = NULL;
+    GenericNode<T> *tail = NULL;
 
-    LinkNode *getHead() {
+    GenericNode<T> *getHead() {
         return this->head;
     }
 };

@@ -89,7 +89,7 @@ void testInsertionSort() {
     cout << "\n--------------TEST INSERTION SORT--------------\n";
 }
 
-int main() {
+int main6() {
     srand(time(0));
     testShellSort();
     testInsertionSort();
